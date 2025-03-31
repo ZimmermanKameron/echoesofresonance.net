@@ -19,52 +19,81 @@
       height: 100vh;
       text-align: center;
       backdrop-filter: blur(6px);
+      overflow: hidden;
     }
-    .overlay {
+    .pyramid-container {
+      width: 280px;
+      height: 220px;
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
       background: rgba(0, 0, 0, 0.7);
-      padding: 2rem;
-      border-radius: 12px;
       box-shadow: 0 0 30px rgba(255, 255, 200, 0.2);
-      max-width: 720px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
       position: relative;
     }
     h1 {
-      font-size: 2.6rem;
+      font-size: 2rem;
       color: #f7e8b5;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
     p {
-      font-size: 1.1rem;
-      line-height: 1.6;
+      font-size: 1rem;
+      line-height: 1.4;
       color: #ccc;
-      margin: 0 0 2rem 0;
+      margin: 0.5rem 0;
     }
     .glyph {
       font-family: 'Courier New', monospace;
-      color: #777;
-      font-size: 0.9rem;
-      opacity: 0.4;
+      color: #fff3b0;
+      font-size: 0.95rem;
+      opacity: 0.85;
       user-select: none;
       pointer-events: none;
+      margin: 0.5rem 0;
+      animation: shimmer 5s infinite alternate ease-in-out;
     }
-    .hidden-code {
-      font-size: 0.85rem;
-      color: #444;
-      margin-top: 1.5rem;
-      font-style: italic;
+    @keyframes shimmer {
+      0% { opacity: 0.4; text-shadow: 0 0 4px #fff1c2; }
+      50% { opacity: 1; text-shadow: 0 0 10px #fff8dc; }
+      100% { opacity: 0.6; text-shadow: 0 0 5px #ffefb0; }
     }
     .sigil {
       animation: pulse 8s infinite ease-in-out;
       margin-top: 1rem;
+      position: relative;
     }
     .sigil img {
-      max-width: 280px;
+      max-width: 150px;
       filter: drop-shadow(0 0 25px #ffe);
       transition: transform 0.8s ease, filter 0.8s ease;
+      z-index: 2;
+      position: relative;
     }
     .sigil img:hover {
       transform: scale(1.05);
       filter: drop-shadow(0 0 40px #ffffcc);
+    }
+    .spiral {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(0deg);
+      background: radial-gradient(circle, rgba(255,255,200,0.08) 20%, transparent 70%);
+      border-radius: 50%;
+      animation: rotateSpiral 30s linear infinite;
+      z-index: 1;
+    }
+    .spiral:nth-child(2) { animation-delay: 5s; width: 220px; height: 220px; }
+    .spiral:nth-child(3) { animation-delay: 10s; width: 180px; height: 180px; }
+
+    @keyframes rotateSpiral {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
     }
     @keyframes pulse {
       0% { opacity: 0.85; transform: scale(1); }
@@ -76,9 +105,15 @@
       color: #aaa;
       margin-top: 1rem;
     }
+    .hidden-code {
+      font-size: 0.85rem;
+      color: #444;
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
     .dimension {
       position: absolute;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-style: italic;
       opacity: 0.3;
       color: #ddd;
@@ -90,19 +125,20 @@
   </style>
 </head>
 <body>
-  <div class="overlay">
+  <div class="pyramid-container">
     <div class="dimension d1">Base: 230.4m</div>
-    <div class="dimension d2">Height: 146.6m (original)</div>
+    <div class="dimension d2">Height: 146.6m</div>
     <div class="dimension d3">Slope angle: 51.84°</div>
-    <div class="dimension d4">Golden ratio encoded</div>
+    <div class="dimension d4">4726.8 Hz</div>
     <h1>Gate Zero</h1>
-    <p>
-      This is the silent gate, etched beneath light.<br>
-      You were not sent here by accident.<br>
-      What lives here is forming—between vibration and void.
-    </p>
-    <div class="glyph">𓂀 𓊽 𓉔 𓆑 𓏏 𓂀 𓎼</div>
+    <p>This is the silent gate, etched beneath light.<br>
+    You were not sent here by accident.<br>
+    What lives here is forming—between vibration and void.</p>
+    <div class="glyph">𓉔𓄿𓂋𓅓𓈖𓎡 𓂋𓇌𓋴𓅱𓈖𓂝𓏏𓂋</div>
     <div class="sigil">
+      <div class="spiral"></div>
+      <div class="spiral"></div>
+      <div class="spiral"></div>
       <img src="/sigil-pyramid.PNG" alt="Pyramid Sigil – Resonance at Apex">
       <div class="tagline">Tesla remembers. Da Vinci waits. And you… listen.</div>
     </div>
