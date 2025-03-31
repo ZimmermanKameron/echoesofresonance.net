@@ -7,142 +7,103 @@
   <style>
     body {
       margin: 0;
-      padding: 0;
-      background: #0a0a0a url('https://upload.wikimedia.org/wikipedia/commons/3/3e/Da_Vinci_Vitruve_Luc_Viatour.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: #f5f5f5;
-      font-family: 'Georgia', serif;
+      background-color: #0a0a0a;
+      color: #fefae0;
+      font-family: Georgia, serif;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      height: 100vh;
-      text-align: center;
-      backdrop-filter: blur(6px);
+      justify-content: center;
+      min-height: 100vh;
+      position: relative;
       overflow: hidden;
     }
-    .pyramid-container {
-      width: 280px;
-      height: 220px;
-      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-      background: rgba(0, 0, 0, 0.7);
-      box-shadow: 0 0 30px rgba(255, 255, 200, 0.2);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem;
-      position: relative;
-    }
-    h1 {
-      font-size: 2rem;
-      color: #f7e8b5;
-      margin-bottom: 0.5rem;
-    }
-    p {
-      font-size: 1rem;
-      line-height: 1.4;
-      color: #ccc;
-      margin: 0.5rem 0;
-    }
-    .glyph {
-      font-family: 'Courier New', monospace;
-      color: #fff3b0;
-      font-size: 0.95rem;
-      opacity: 0.85;
-      user-select: none;
-      pointer-events: none;
-      margin: 0.5rem 0;
-      animation: shimmer 5s infinite alternate ease-in-out;
-    }
-    @keyframes shimmer {
-      0% { opacity: 0.4; text-shadow: 0 0 4px #fff1c2; }
-      50% { opacity: 1; text-shadow: 0 0 10px #fff8dc; }
-      100% { opacity: 0.6; text-shadow: 0 0 5px #ffefb0; }
-    }
-    .sigil {
-      animation: pulse 8s infinite ease-in-out;
-      margin-top: 1rem;
-      position: relative;
-    }
-    .sigil img {
-      max-width: 150px;
-      filter: drop-shadow(0 0 25px #ffe);
-      transition: transform 0.8s ease, filter 0.8s ease;
-      z-index: 2;
-      position: relative;
-    }
-    .sigil img:hover {
-      transform: scale(1.05);
-      filter: drop-shadow(0 0 40px #ffffcc);
-    }
-    .spiral {
+
+    .triangle-mask {
       position: absolute;
-      width: 300px;
-      height: 300px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotate(0deg);
-      background: radial-gradient(circle, rgba(255,255,200,0.08) 20%, transparent 70%);
-      border-radius: 50%;
-      animation: rotateSpiral 30s linear infinite;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.9) 80%);
+      clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
       z-index: 1;
     }
-    .spiral:nth-child(2) { animation-delay: 5s; width: 220px; height: 220px; }
-    .spiral:nth-child(3) { animation-delay: 10s; width: 180px; height: 180px; }
 
-    @keyframes rotateSpiral {
-      from { transform: translate(-50%, -50%) rotate(0deg); }
-      to { transform: translate(-50%, -50%) rotate(360deg); }
+    .container {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2rem;
     }
-    @keyframes pulse {
-      0% { opacity: 0.85; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.02); }
-      100% { opacity: 0.85; transform: scale(1); }
+
+    h1 {
+      font-size: 2.8rem;
+      color: #fdf6d3;
     }
-    .tagline {
-      font-style: italic;
-      color: #aaa;
-      margin-top: 1rem;
+
+    p {
+      max-width: 700px;
+      margin: 0.5rem auto;
+      line-height: 1.6;
+      font-size: 1.1rem;
     }
-    .hidden-code {
-      font-size: 0.85rem;
-      color: #444;
+
+    .glyphs {
+      font-family: 'Courier New', monospace;
+      font-size: 1.3rem;
+      margin: 1.5rem 0;
+      opacity: 0.6;
+      letter-spacing: 0.3rem;
+    }
+
+    .sigil {
+      margin: 2rem auto 1rem;
+      animation: pulse 5s infinite ease-in-out;
+      max-width: 180px;
+    }
+
+    .sigil img {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 0 12px #ddd6b6);
+    }
+
+    .details {
+      font-size: 0.9rem;
+      color: #a99;
       margin-top: 0.5rem;
-      font-style: italic;
     }
-    .dimension {
-      position: absolute;
-      font-size: 0.7rem;
-      font-style: italic;
-      opacity: 0.3;
-      color: #ddd;
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.75; }
+      50% { opacity: 1; }
     }
-    .d1 { top: 10px; left: 20px; }
-    .d2 { bottom: 10px; right: 20px; }
-    .d3 { top: 45%; left: -80px; transform: rotate(-90deg); }
-    .d4 { bottom: 20px; left: 40%; }
   </style>
 </head>
 <body>
-  <div class="pyramid-container">
-    <div class="dimension d1">Base: 230.4m</div>
-    <div class="dimension d2">Height: 146.6m</div>
-    <div class="dimension d3">Slope angle: 51.84°</div>
-    <div class="dimension d4">4726.8 Hz</div>
+  <div class="triangle-mask"></div>
+
+  <div class="container">
     <h1>Gate Zero</h1>
-    <p>This is the silent gate, etched beneath light.<br>
-    You were not sent here by accident.<br>
+    <p>This is the silent gate, etched beneath light.<br />
+    You were not sent here by accident.<br />
     What lives here is forming—between vibration and void.</p>
-    <div class="glyph">𓉔𓄿𓂋𓅓𓈖𓎡 𓂋𓇌𓋴𓅱𓈖𓂝𓏏𓂋</div>
+
+    <div class="glyphs">𓂀 𓊹 𓇳 𓏏 𓁿 𓆣 𓅓</div>
+
     <div class="sigil">
-      <div class="spiral"></div>
-      <div class="spiral"></div>
-      <div class="spiral"></div>
-      <img src="/sigil-pyramid.PNG" alt="Pyramid Sigil – Resonance at Apex">
-      <div class="tagline">Tesla remembers. Da Vinci waits. And you… listen.</div>
+      <img src="sigil-pyramid.PNG" alt="Sigil of Resonance" />
     </div>
-    <div class="hidden-code">13° 20′ N · 33° 21′ E</div>
+
+    <div class="details">
+      <p>Base: 230.4m &nbsp; • &nbsp; Slope angle: 51.84°</p>
+      <p>13° 20′ N · 33° 21′ E &nbsp; • &nbsp; Height: 146.6m</p>
+      <p>Frequency: 4726.8 Hz</p>
+    </div>
+
+    <p style="margin-top: 2rem; font-style: italic; color: #cbb;">
+      Tesla remembers. Da Vinci waits. And you... listen.
+    </p>
   </div>
 </body>
 </html>
