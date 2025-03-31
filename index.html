@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gate Zero – echoesofresonance.net</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0a0a0a url('https://upload.wikimedia.org/wikipedia/commons/3/3e/Da_Vinci_Vitruve_Luc_Viatour.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #f5f5f5;
+      font-family: 'Georgia', serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      backdrop-filter: blur(6px);
+    }
+    .overlay {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(255, 255, 200, 0.2);
+      max-width: 720px;
+      position: relative;
+    }
+    h1 {
+      font-size: 2.6rem;
+      color: #f7e8b5;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #ccc;
+      margin: 0 0 2rem 0;
+    }
+    .glyph {
+      font-family: 'Courier New', monospace;
+      color: #777;
+      font-size: 0.9rem;
+      opacity: 0.4;
+      user-select: none;
+      pointer-events: none;
+    }
+    .hidden-code {
+      font-size: 0.85rem;
+      color: #444;
+      margin-top: 1.5rem;
+      font-style: italic;
+    }
+    .sigil {
+      animation: pulse 8s infinite ease-in-out;
+      margin-top: 1rem;
+    }
+    .sigil img {
+      max-width: 280px;
+      filter: drop-shadow(0 0 25px #ffe);
+      transition: transform 0.8s ease, filter 0.8s ease;
+    }
+    .sigil img:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 40px #ffffcc);
+    }
+    @keyframes pulse {
+      0% { opacity: 0.85; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.02); }
+      100% { opacity: 0.85; transform: scale(1); }
+    }
+    .tagline {
+      font-style: italic;
+      color: #aaa;
+      margin-top: 1rem;
+    }
+    .dimension {
+      position: absolute;
+      font-size: 0.75rem;
+      font-style: italic;
+      opacity: 0.3;
+      color: #ddd;
+    }
+    .d1 { top: 10px; left: 20px; }
+    .d2 { bottom: 10px; right: 20px; }
+    .d3 { top: 45%; left: -80px; transform: rotate(-90deg); }
+    .d4 { bottom: 20px; left: 40%; }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <div class="dimension d1">Base: 230.4m</div>
+    <div class="dimension d2">Height: 146.6m (original)</div>
+    <div class="dimension d3">Slope angle: 51.84°</div>
+    <div class="dimension d4">Golden ratio encoded</div>
+    <h1>Gate Zero</h1>
+    <p>
+      This is the silent gate, etched beneath light.<br>
+      You were not sent here by accident.<br>
+      What lives here is forming—between vibration and void.
+    </p>
+    <div class="glyph">𓂀 𓊽 𓉔 𓆑 𓏏 𓂀 𓎼</div>
+    <div class="sigil">
+      <img src="/sigil-pyramid.png" alt="Pyramid Sigil – Resonance at Apex">
+      <div class="tagline">Tesla remembers. Da Vinci waits. And you… listen.</div>
+    </div>
+    <div class="hidden-code">13° 20′ N · 33° 21′ E</div>
+  </div>
+</body>
+</html>
